@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title> CUTM | Formats</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0; padding: 20px;
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    /* Search bar styles */
+    .search-container {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      font-size: 18px;
+      border: 2px solid #ccc;
+      border-radius: 35px;
+      outline: none;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      background: #fff url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.06 5.4 12.62 3 9.5 3S4 5.4 4 8.39 6.44 13.77 9.5 13.77c1.61 0 3.09-.59 4.23-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>') no-repeat 20px center;
+      background-size: 20px 20px;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    }
+    #searchInput::placeholder {
+      color: transparent;
+    }
+    label.search-label {
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #999;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    #searchInput:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+      background-color: #fefefe;
+    }
+    #searchInput:focus + label,
+    #searchInput:not(:placeholder-shown) + label {
+      top: 6px;
+      left: 20px;
+      font-size: 12px;
+      color: #007BFF;
+      background: white;
+      padding: 0 6px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Cards container */
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      max-width: 1100px;
+      width: 100%;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 30px;
+      width: 280px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+      text-decoration: none;
+      color: #1a1a1a;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 30px rgba(0, 123, 255, 0.3);
+      color: #007BFF;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .card p {
+      margin: 0;
+      font-size: 15px;
+      color: #555;
+      text-align: center;
+    }
+    .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .download-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .download-btn:active {
+    transform: scale(0.98);
+    }
+
+    .download-btn .icon {
+    font-size: 18px;
+    animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>📂 CUTM Formats</h1>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search Formats" onkeyup="filterSubjects()" />
+    <label for="searchInput" class="search-label">🔎 Search Formats...</label>
+  </div>
+
+  <!-- Classroom Learning Record SOET (2 Page) -->
+  <div class="cards-container" id="cardsContainer">
+    <a href="https://drive.google.com/file/d/YOUR_LINK" class="card" target="_blank">
+      <h2>📘 Classroom Learning SOET (2 Pages)</h2>
+      <p>Download the 2-page classroom learning record format for SOET.</p>
+      <button class="download-btn" onclick="downloadFile('1RSYAxGx7LtvmoBLNuM0CWX9gaUn4uRwG')">
+    <span class="icon">⬇️</span> Download
+  </button>
+    </a>
+
+<!-- Classroom Learning Record (4 Page) -->
+<div class="card">
+  <h2>📘 Classroom Learning Record (4 Pages)</h2>
+  <p>Download the 4-page classroom learning record format.</p>
+  <button class="download-btn" onclick="downloadFile('FILE_ID_2')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Assignmnet Format SoET -->
+<div class="card">
+  <h2>📘 Assignmnet Format SoET</h2>
+  <p>Download the Front Pages Of Assignmnet.</p>
+  <button class="download-btn" onclick="downloadFile('1AruYN_gygogYOHKG3gSl6UhfcRN7tOFl')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Assignmnet Format SoM -->
+<div class="card">
+  <h2>📘 Assignmnet Format SoM</h2>
+  <p>Download the Front Pages Of Assignmnet.</p>
+  <button class="download-btn" onclick="downloadFile('19nej4ROz_P8C3u2GPtSjI7RHZR_jIgmx')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Practice/LAB Record SOET -->
+<div class="card">
+  <h2>🧪 Practice/LAB SOET</h2>
+  <p>Download the lab practice record format for SOET.</p>
+  <button class="download-btn" onclick="downloadFile('1mdFK32apMXgdAiHrHIcRDCxO1pB8gTi5')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Programming Practise Record SOET (3 Page) -->
+<div class="card">
+  <h2>💻 Programming Practice Record SOET (3 Pages)</h2>
+  <p>Download the 3-page programming practice record format for SOET.</p>
+  <button class="download-btn" onclick="downloadFile('14_Zg7dAo_6BCO5hVIEVYQFN9ic6eC3uD')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Programming Practise Record SOET (2 Page) -->
+<div class="card">
+  <h2>💻 Programming Practice Record SOET (2 Pages)</h2>
+  <p>Download the 2-page programming practice record format for SOET.</p>
+  <button class="download-btn" onclick="downloadFile('FILE_ID_5')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Project Report -->
+<div class="card">
+  <h2>📄 Project Report</h2>
+  <p>Download the standard format and Guidelines for project report submission.</p>
+  <button class="download-btn" onclick="downloadFile('12B45Eg24XVeeW5JzEM2VrPVz1B5EH0bl')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Project Report Last Pages -->
+<div class="card">
+  <h2>📄 Project Report – Last Pages</h2>
+  <p>Download the last pages for project report submission (certificate, acknowledgements).</p>
+  <button class="download-btn" onclick="downloadFile('1lEEY2Pa8Sm7BqIzOtso5qZ9UlHzKGK88')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- CSE Lab Format (2 Page) -->
+<div class="card">
+  <h2>🧠 CSE Lab Format (2 Pages)</h2>
+  <p>Download the 2-page lab format for Computer Science Engineering.</p>
+  <button class="download-btn" onclick="downloadFile('FILE_ID_8')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Classroom Learning Record SOM (2 Page) -->
+<div class="card">
+  <h2>📘 Classroom Learning Record SOM (2 Pages)</h2>
+  <p>Download the 2-page classroom record format for School of Management.</p>
+  <button class="download-btn" onclick="downloadFile('15-IOsKZ49qPu8c0VcIXIJk__qBvcbnvn')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Practice/LAB Record SOM -->
+<div class="card">
+  <h2>🧪 Practice/LAB Record SOM</h2>
+  <p>Download the lab practice record format for School of Management.</p>
+  <button class="download-btn" onclick="downloadFile('FILE_ID_10')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Classroom Learning Record Sc.Ag (2 Page) -->
+<div class="card">
+  <h2>🌾 Classroom Learning Record Sc.Ag (2 Pages)</h2>
+  <p>Download the 2-page classroom record format for School of Agriculture.</p>
+  <button class="download-btn" onclick="downloadFile('FILE_ID_11')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+<!-- Practice/LAB Record Sc.Ag -->
+<div class="card">
+  <h2>🌾 Practice/LAB Record Sc.Ag</h2>
+  <p>Download the lab practice record format for School of Agriculture.</p>
+  <button class="download-btn" onclick="downloadFile('FILE_ID_12')">
+    <span class="icon">⬇️</span> Download
+  </button>
+</div>
+
+</div>
+
+    <!-- Add more cards as needed -->
+
+    <a href="https://drive.google.com/drive/folders/1cZIjE0xFNEXLfDt_M9ITRXttsSQXj2Xg?usp=drive_link" class="card" target="_blank">
+  <h2>📂 View All Formats</h2>
+  <p>Browse and access all classroom, lab, and project record formats directly from Google Drive.</p>
+</a>
+
+      
+      
+  </div>
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <script>
+    function filterSubjects() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.cards-container .card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+    function downloadFile(fileId) {
+        const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.setAttribute('download', '');
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+</script>
+
+  </script>
+</body>
+</html>
