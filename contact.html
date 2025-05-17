@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5e504;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      max-width: 350px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 1px;
+      font-weight: 700;
+    }
+    label {
+      display: block;
+      margin-bottom: 1px;
+      font-weight: 600;
+      color: #333;
+      text-align: left;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 90%;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border: 1.5px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    textarea {
+      min-height: 100px;
+    }
+    button, .home-btn {
+      width: 100%;
+      padding: 14px 0;
+      background-color: #007bff;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, opacity 0.5s ease;
+      margin-top: 10px;
+      text-decoration: none;
+      display: inline-block;
+      opacity: 1;
+    }
+    button:hover, .home-btn:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      font-weight: 600;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.6s ease, max-height 0.6s ease;
+    }
+    .message.show {
+      opacity: 1;
+      max-height: 100px;
+    }
+    .success-message {
+      color: #155724;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+    }
+    .error-message {
+      color: #721c24;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Us</h1>
+    
+    <div id="successMessage" class="message success-message">✅ Your message has been sent successfully!</div>
+    <div id="errorMessage" class="message error-message">❌ Oops! Something went wrong. Please try again.</div>
+
+    <form id="contact-form" onsubmit="sendEmail(event)">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="contact">Contact Number</label>
+      <input type="tel" id="contact" name="contact" required pattern="[0-9+\-\s]{7,15}" title="Enter a valid phone number" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="help">Help Required</label>
+      <textarea id="help" name="help" required></textarea>
+
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <a href="index.html" class="home-btn" id="homeButton" style="display:none;">Return to Home</a>
+  </div>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init('RnRzp13qe0orxDmMS'); // Your EmailJS User ID / Public Key
+    })();
+
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const homeButton = document.getElementById('homeButton');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showMessage(element) {
+      element.classList.add('show');
+    }
+    function hideMessage(element) {
+      element.classList.remove('show');
+    }
+
+    function sendEmail(event) {
+      event.preventDefault();
+      hideMessage(successMessage);
+      hideMessage(errorMessage);
+      homeButton.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      
+      emailjs.sendForm('service_in8w43j', 'template_9eqt2db', form)
+        .then(function() {
+          showMessage(successMessage);
+          form.style.transition = 'opacity 0.8s ease';
+          form.style.opacity = '0';
+          setTimeout(() => {
+            form.style.display = 'none';
+            homeButton.style.display = 'inline-block';
+            homeButton.style.opacity = '0';
+            // Fade in home button
+            setTimeout(() => {
+              homeButton.style.opacity = '1';
+            }, 50);
+          }, 800);
+        }, function(error) {
+          showMessage(errorMessage);
+          console.error('EmailJS error:', error);
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        });
+    }
+  </script>
+</body>
+</html>

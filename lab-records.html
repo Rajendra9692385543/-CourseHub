@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab Records | CUTM Resources</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #fdfcfb, #f1f8e9);
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2.4em;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #007BFF;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .search-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #searchInput {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 35px;
+    outline: none;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    background: #fff url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.06 5.4 12.62 3 9.5 3S4 5.4 4 8.39 6.44 13.77 9.5 13.77c1.61 0 3.09-.59 4.23-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>') no-repeat 20px center;
+    background-size: 20px 20px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    }
+
+    #searchInput::placeholder {
+    color: transparent; /* Hide placeholder text for floating label effect */
+    }
+
+    label.search-label {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #999;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    user-select: none;
+    }
+
+    #searchInput:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+    background-color: #fefefe;
+    }
+
+    #searchInput:focus + label,
+    #searchInput:not(:placeholder-shown) + label {
+    top: 6px;
+    left: 20px;
+    font-size: 12px;
+    color: #007BFF;
+    background: white;
+    padding: 0 6px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🔬 Lab Records</h1>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search subjects" onkeyup="filterSubjects()" />
+    <label for="searchInput" class="search-label">🔍 Search subjects...</label>
+  </div>  
+  
+  <div class="container">
+<!--
+    <a href="https://drive.google.com/drive/folders/1ABCxyzDELA" class="card" target="_blank">
+        <h2>📘 Differential Equations and Linear Algebra</h2>
+        <p>View lab records for Differential Equations and Linear Algebra</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/1_awYksR5dyKfvW5gcaXw9UsKwudkBsI2?usp=drive_link" class="card" target="_blank">
+        <h2>🧪 Applied Analytical Chemistry</h2>
+        <p>View lab records for Applied Analytical Chemistry</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1hPxgiOQgFzCaD-3h51kJfjcbpzj7V8_M?usp=drive_link" class="card" target="_blank">
+        <h2>🔌 Basic Electrical Engineering</h2>
+        <p>View lab records for Basic Electrical Engineering</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1TVIHyKuvwIZ1cIUQAnEyCWtWn308VC9P?usp=drive_link" class="card" target="_blank">
+        <h2>📊 Data Analysis & Visualisation Using Python</h2>
+        <p>View lab records for Data Analysis and Visualisation</p>
+      </a>
+<!--     
+      <a href="https://drive.google.com/drive/folders/1ABCxyzJR" class="card" target="_blank">
+        <h2>💼 Job Readiness</h2>
+        <p>View lab records for Job Readiness</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzDM" class="card" target="_blank">
+        <h2>🧮 Discrete Mathematics</h2>
+        <p>View lab records for Discrete Mathematics</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzEVS" class="card" target="_blank">
+        <h2>🌱 Environmental Studies</h2>
+        <p>View lab records for Environmental Studies</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzEEC" class="card" target="_blank">
+        <h2>💰 Engineering Economics and Costing</h2>
+        <p>View lab records for Engineering Economics and Costing</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/1Hjz_fyinXoqYXC4cKt-Tk22gGRxMODSs?usp=drive_link" class="card" target="_blank">
+        <h2>💻 Programming in C</h2>
+        <p>View lab records for Programming in C</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1TK7VRIxT0yy6b7LHLt-UzWULHHvkq16m?usp=drive_link" class="card" target="_blank">
+        <h2>🗄️ Database Creation and Maintenance</h2>
+        <p>View lab records for Database Creation and Maintenance</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1WiNcxg2Kot9y9uTNkdipi1ch5jOmsxd8?usp=drive_link" class="card" target="_blank">
+        <h2>🔧 Electronic Devices and Systems</h2>
+        <p>View lab records for Electronic Devices and Systems</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ta8ayc11Jyuta1sku8TFER66ym8MC0XH?usp=drive_link" class="card" target="_blank">
+        <h2>🔬 Optics and Optical Fibres</h2>
+        <p>View lab records for Optics and Optical Fibres</p>
+      </a>
+<!--      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzGHRE" class="card" target="_blank">
+        <h2>⚖️ Gender, Human Rights and Ethics</h2>
+        <p>View lab records for Gender, Human Rights and Ethics</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/1xilcG30Jzw6lEzNnVsxp8vKd_BDfIUdT?usp=drive_link" class="card" target="_blank">
+        <h2>🤖 Machine Learning Using Python</h2>
+        <p>View lab records for Machine Learning Using Python</p>
+      </a>
+<!--       
+      <a href="https://drive.google.com/drive/folders/1ABCxyzSEP" class="card" target="_blank">
+        <h2>🛠️ Smart Engineering Project</h2>
+        <p>View lab records for Smart Engineering Project</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/1ivjVRtz9ttHLAe29hdGrohEHVU8jDssC?usp=drive_link" class="card" target="_blank">
+        <h2>⚙️ Data Structure with Competitive Coding</h2>
+        <p>View lab records for Data Structure with Competitive Coding</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1zoO-LKGpQ95e7HpvbV9gtpJxy674TlTm?usp=drive_link" class="card" target="_blank">
+        <h2>☕ Java Programming</h2>
+        <p>View lab records for Java Programming</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1HS4prC1XGbLpiQ-4m8xWIdDNk-C77ypI?usp=drive_link" class="card" target="_blank">
+        <h2>🧪 Software Engineering and Testing</h2>
+        <p>View lab records for Software Engineering and Testing</p>
+      </a>
+<!--      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzCCC" class="card" target="_blank">
+        <h2>🌿 Coffee and Cocoa Cultivation</h2>
+        <p>View lab records for Coffee and Cocoa Cultivation</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/15BZShJAAol1EjziWPGPERxJhuNaRLQNM?usp=drive_link" class="card" target="_blank">
+        <h2>🏭 Industrial IoT and Automation</h2>
+        <p>View lab records for Industrial IoT and Automation</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1Frmx0A4tMIW3PsQnO9NoxB_06OPIviMJ?usp=drive_link" class="card" target="_blank">
+        <h2>🔩 System Integration with Dymola</h2>
+        <p>View lab records for System Integration with Dymola</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1zQ2wfVhnh9qwjN8qSzgWuitwGXcii-FV?usp=drive_link" class="card" target="_blank">
+        <h2>📱 Android Development with Kotlin</h2>
+        <p>View lab records for Android Development with Kotlin</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1_6nW4nnhnvjYs0vrNLrgOOJgGDqqFACl?usp=drive_link" class="card" target="_blank">
+        <h2>🎨 Customer Experience Design and Programming</h2>
+        <p>View lab records for Customer Experience Design</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/16mP6fiw5PW7FQhqDEuFML66-vW3t6s1x?usp=drive_link" class="card" target="_blank">
+        <h2>💻 System Administrator with Redhat</h2>
+        <p>View lab records for Redhat System Administration</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ddUr0IGrzHkBMvf6dSEwE9gq8YSWfTa4?usp=drive_link" class="card" target="_blank">
+        <h2>🧠 Design and Analysis of Algorithm</h2>
+        <p>View lab records for Design and Analysis of Algorithm</p>
+      </a>
+<!--      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzPF" class="card" target="_blank">
+        <h2>🐔 Poultry Farming</h2>
+        <p>View lab records for Poultry Farming</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/1oNSq2jqSL_a82CVFXg_n-KFndTq3mIwA?usp=drive_link" class="card" target="_blank">
+        <h2>🔩 Mechanics for Engineering</h2>
+        <p>View lab records for Mechanics for Engineering</p>
+      </a>
+<!--      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzPM" class="card" target="_blank">
+        <h2>📈 Project Management</h2>
+        <p>View lab records for Project Management</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzLFT" class="card" target="_blank">
+        <h2>🌊 Laplace and Fourier Transforms</h2>
+        <p>View lab records for Laplace and Fourier Transforms</p>
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1ABCxyzCN" class="card" target="_blank">
+        <h2>🔢 Complex Numbers</h2>
+        <p>View lab records for Complex Numbers</p>
+      </a>
+-->      
+      <a href="https://drive.google.com/drive/folders/16IBvfBWqgghJVOhqK4A_SSjJFzDOv9Gj?usp=drive_link" class="card" target="_blank">
+        <h2>🏗️ Applied Engineering Materials</h2>
+        <p>View lab records for Applied Engineering Materials</p>
+      </a>
+      
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+</body>
+<script>
+    function filterSubjects() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+    
+      cards.forEach(card => {
+        const subjectName = card.querySelector('h2').textContent.toLowerCase();
+        if(subjectName.indexOf(filter) > -1) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    </script>
+    
+</html>

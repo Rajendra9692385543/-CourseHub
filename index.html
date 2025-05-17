@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 30px 20px;
+      width: 260px;
+      border-radius: 15px;
+      text-align: center;
+      text-decoration: none;
+      color: #2c3e50;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      background-color: #f1f8ff;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #888;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎓 CourseHub</h1>
+  <p>Study Smarter, Not Harder</p>
+
+  <div class="card-container">
+    <a href="subject.html" class="card">
+      <h2>🧠 Question Papers</h2>
+      <p>Browse all subjects and access papers</p>
+    </a>
+    <a href="courses.html" class="card">
+      <h2>💼 Twin of CUTM Courseware</h2>
+      <p>Check the Modules for each Course.</p>
+    </a>
+    <a href="learning-records.html" class="card">
+      <h2>📖 Learning Records</h2>
+      <p>Track and view your learning progress</p>
+    </a>
+    
+    <a href="lab-records.html" class="card">
+      <h2>🔬 Lab Records</h2>
+      <p>View and manage lab experiment data</p>
+    </a>
+
+    <a href="notes.html" class="card">
+      <h2>🗒️ Notes</h2>
+      <p>Study notes and summaries</p>
+    </a>
+
+    <a href="https://courseware.cutm.ac.in/" class="card" target="_blank">
+      <h2>🌐 CUTM Courseware </h2>
+      <p>Visit official university website</p>
+    </a>
+    <a href="https://cutm.icloudems.com/corecampus/index.php" class="card" target="_blank">
+      <h2>👨🏻‍💻 ERP Login</h2>
+      <p>Visit official university Student Login</p>
+    </a>
+    <a href="contact.html" class="card">
+      <h2>📧 Contact</h2>
+      <p>Need help or suggestions? Contact us</p>
+    </a>
+  </div>
+
+  <div class="footer">
+    © 2025 | Created by RajuBhai
+  </div>
+
+</body>
+</html>

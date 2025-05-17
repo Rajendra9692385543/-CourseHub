@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Question Papers | CUTM</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0; padding: 20px;
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    /* Search bar styles */
+    .search-container {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      font-size: 18px;
+      border: 2px solid #ccc;
+      border-radius: 35px;
+      outline: none;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      background: #fff url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.06 5.4 12.62 3 9.5 3S4 5.4 4 8.39 6.44 13.77 9.5 13.77c1.61 0 3.09-.59 4.23-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>') no-repeat 20px center;
+      background-size: 20px 20px;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    }
+    #searchInput::placeholder {
+      color: transparent;
+    }
+    label.search-label {
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #999;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    #searchInput:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+      background-color: #fefefe;
+    }
+    #searchInput:focus + label,
+    #searchInput:not(:placeholder-shown) + label {
+      top: 6px;
+      left: 20px;
+      font-size: 12px;
+      color: #007BFF;
+      background: white;
+      padding: 0 6px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Cards container */
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      max-width: 1100px;
+      width: 100%;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 30px;
+      width: 280px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+      text-decoration: none;
+      color: #1a1a1a;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 30px rgba(0, 123, 255, 0.3);
+      color: #007BFF;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .card p {
+      margin: 0;
+      font-size: 15px;
+      color: #555;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Question Papers</h1>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search subjects" onkeyup="filterSubjects()" />
+    <label for="searchInput" class="search-label">🔎 Search subjects...</label>
+  </div>
+
+  <div class="cards-container" id="cardsContainer">
+    <a href="https://drive.google.com/drive/folders/1gjGBNArC0EywybHCv-0Z7OJ0Jjw-hXma?usp=drive_link" class="card" target="_blank">
+      <h2>📘 Differential Equations and Linear Algebra</h2>
+      <p>View question papers for Differential Equations and Linear Algebra</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1WgZnxiqmE3xtgPYauiqDGSB53u1PWlhW?usp=drive_link" class="card" target="_blank">
+      <h2>🧪 Applied Analytical Chemistry</h2>
+      <p>View question papers for Applied Analytical Chemistry</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1kYT0mTSjVY58s5T8FnLiU4ffe_OdMyqF?usp=drive_link" class="card" target="_blank">
+      <h2>🔌 Basic Electrical Engineering</h2>
+      <p>View question papers for Basic Electrical Engineering</p>
+    </a>
+<!--    
+    <a href="#" class="card" target="_blank">
+      <h2>📊 Data Analysis and Visualisation Using Python</h2>
+      <p>View question papers for DAV Using Python</p>
+    </a>
+    
+    <a href="#" class="card" target="_blank">
+      <h2>💼 Job Readiness</h2>
+      <p>View question papers for Job Readiness</p>
+    </a>
+-->    
+    <a href="https://drive.google.com/drive/folders/1A9Y9m7nyeAhCWDrpOll1mZ-6dfRJw-aa?usp=drive_link" class="card" target="_blank">
+      <h2>🧮 Discrete Mathematics</h2>
+      <p>View question papers for Discrete Mathematics</p>
+    </a>
+<!--    
+    <a href="#" class="card" target="_blank">
+      <h2>🌱 Environmental Studies</h2>
+      <p>View question papers for Environmental Studies</p>
+    </a>
+-->    
+    <a href="https://drive.google.com/drive/folders/1N_rHMai4y1urbSk--9VHChRg8eVZ_8YM?usp=drive_link" class="card" target="_blank">
+      <h2>💰 Engineering Economics and Costing</h2>
+      <p>View question papers for EEC</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1siEr3xnO4O1o7bHhHlxDfA2HBjtSR0cN?usp=drive_link" class="card" target="_blank">
+      <h2>💻 Programming in C</h2>
+      <p>View question papers for Programming in C</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1AW6O75nAfOC8d1IpsMA8PC6x7ZJh_64z?usp=drive_link" class="card" target="_blank">
+      <h2>🗄️ Database Creation and Maintenance</h2>
+      <p>View question papers for DCM</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1R0YwKM65J-dkZfOQuIcUJ-vynujfZTcQ?usp=drive_link" class="card" target="_blank">
+      <h2>🔧 Electronic Devices and Systems</h2>
+      <p>View question papers for EDS</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1BTN9NqUa8Mrw1MqADw9y4Onup0f732LT?usp=drive_link" class="card" target="_blank">
+      <h2>🔭 Optics and Optical Fibres</h2>
+      <p>View question papers for Optics and Optical Fibres</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1lCtISJuujatZ9t9dkpBwNSoH06FYUi0e?usp=drive_link" class="card" target="_blank">
+      <h2>🚻 Gender, Human Rights and Ethics</h2>
+      <p>View question papers for GHRE</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1FCQzM0RS39hjQib3UcNcUIYU6Fb_RH07?usp=drive_link" class="card" target="_blank">
+      <h2>🤖 Machine Learning Using Python</h2>
+      <p>View question papers for ML with Python</p>
+    </a>
+<!--    
+    <a href="#" class="card" target="_blank">
+      <h2>🧠 Smart Engineering Project</h2>
+      <p>View question papers for Smart Engineering Project</p>
+    </a>
+-->    
+    <a href="https://drive.google.com/drive/folders/1WBqqG31oBrBmS6JR10DDRa_QHKsjHf4g?usp=drive_link" class="card" target="_blank">
+      <h2>💾 Data Structures with Competitive Coding</h2>
+      <p>View question papers for DS with Competitive Coding</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1OLi932M2hoychtmOi_wCezivZoISU1yY?usp=drive_link" class="card" target="_blank">
+      <h2>☕ Java Programming</h2>
+      <p>View question papers for Java Programming</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1t44nTEH4Oq07pWDW4qGZyj4VjK3PmvP6?usp=drive_link" class="card" target="_blank">
+      <h2>🧪 Software Engineering and Testing</h2>
+      <p>View question papers for SET</p>
+    </a>
+<!--    
+    <a href="#" class="card" target="_blank">
+      <h2>🌱 Coffee and Cocoa Cultivation</h2>
+      <p>View question papers for Coffee & Cocoa Cultivation</p>
+    </a>
+-->    
+    <a href="https://drive.google.com/drive/folders/13jwy-bfBYDpMzfNxat5kwVRY--8m8vZm?usp=drive_link" class="card" target="_blank">
+      <h2>🏭 Industrial IoT and Automation</h2>
+      <p>View question papers for IIoT and Automation</p>
+    </a>
+<!--    
+    <a href="#" class="card" target="_blank">
+      <h2>🔩 System Integration with Dymola</h2>
+      <p>View question papers for System Integration with Dymola</p>
+    </a>
+-->    
+    <a href="https://drive.google.com/drive/folders/1-ckDfrDqiiBvQ8oytw7II2RUE-IBfm0C?usp=drive_link" class="card" target="_blank">
+      <h2>📱 Android Development with Kotlin</h2>
+      <p>View question papers for Android Dev with Kotlin</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1FozLTrfWZZBT_J-1tnB7eL5GHkejzbP3?usp=drive_link" class="card" target="_blank">
+      <h2>🎯 Customer Experience Design & Programming</h2>
+      <p>View question papers for CX Design & Programming</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1A-ntkHDJVlKVWdV7z_gnB8Z6-fyxBSUK?usp=drive_link" class="card" target="_blank">
+      <h2>🖥️ System Administrator with Red Hat</h2>
+      <p>View question papers for System Admin with Red Hat</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1kJDz7wq2XxyhRxaw2yCnWQ1B9yOhRnGX?usp=drive_link" class="card" target="_blank">
+      <h2>📐 Design and Analysis of Algorithm</h2>
+      <p>View question papers for DAA</p>
+    </a>
+<!--    
+    <a href="#" class="card" target="_blank">
+      <h2>🐔 Poultry Farming</h2>
+      <p>View question papers for Poultry Farming</p>
+    </a>
+-->    
+    <a href="https://drive.google.com/drive/folders/1qXHux1eBgUP1UNmk7ljadOUuXc1En4vf?usp=drive_link" class="card" target="_blank">
+      <h2>🛠️ Mechanics for Engineering</h2>
+      <p>View question papers for Engineering Mechanics</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1YkHllS5xJHA0TdscYzvo2cQTPOMVDGY-?usp=drive_link" class="card" target="_blank">
+      <h2>📊 Project Management</h2>
+      <p>View question papers for Project Management</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1BI-AGAOk52CSpbDeeQ45_EfWUUBQlnS9?usp=drive_link" class="card" target="_blank">
+      <h2>📉 Laplace and Fourier Transforms</h2>
+      <p>View question papers for LFT</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1oIlv1RDk16eOyu8_zYKiclggbcNluQSr?usp=drive_link" class="card" target="_blank">
+      <h2>➗ Complex Numbers</h2>
+      <p>View question papers for Complex Numbers</p>
+    </a>
+    
+    <a href="https://drive.google.com/drive/folders/1xIpbFsZpzRVIoa_HjPfF2ujHaNPKT7Fm?usp=drive_link" class="card" target="_blank">
+      <h2>🔬 Applied Engineering Materials</h2>
+      <p>View question papers for Applied Engineering Materials</p>
+    </a>
+    
+      
+  </div>
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <script>
+    function filterSubjects() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.cards-container .card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
