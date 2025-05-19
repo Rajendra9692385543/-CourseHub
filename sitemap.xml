@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://course-hub-omega.vercel.app/</loc>
+  <lastmod>2025-05-19T09:57:07+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/subject.html</loc>
+  <lastmod>2025-05-19T09:57:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/courses.html</loc>
+  <lastmod>2025-05-19T09:57:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/formats.html</loc>
+  <lastmod>2025-05-19T09:57:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/learning-records.html</loc>
+  <lastmod>2025-05-19T09:57:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/lab-records.html</loc>
+  <lastmod>2025-05-19T09:57:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/notes.html</loc>
+  <lastmod>2025-05-19T09:57:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/contact.html</loc>
+  <lastmod>2025-05-19T09:57:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/index.html</loc>
+  <lastmod>2025-05-19T09:57:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/cutm-courses/differential-equations.html</loc>
+  <lastmod>2025-05-19T09:57:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/cutm-courses/applied-analytical-chemistry.html</loc>
+  <lastmod>2025-05-19T09:57:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/cutm-courses/basic-electrical-engineering.html</loc>
+  <lastmod>2025-05-19T09:57:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/cutm-courses/data-analysis-python.html</loc>
+  <lastmod>2025-05-19T09:57:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/cutm-courses/discrete-mathematics.html</loc>
+  <lastmod>2025-05-19T09:57:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://course-hub-omega.vercel.app/cutm-courses/optics.html</loc>
+  <lastmod>2025-05-19T09:57:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
