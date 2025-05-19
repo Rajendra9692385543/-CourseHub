@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Creation and Maintenance </title>
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; padding-bottom: 50px; }
+    h2, h4 { color: #003366; }
+    .card { margin-bottom: 20px; }
+    .session-table th, .session-table td { vertical-align: top; }
+    .module-title { background-color: #e9ecef; padding: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Database Creation and Maintenance </h2>
+
+    <div class="card">
+      <div class="card-body">
+        <h4>Course Code (Credit):</h4>
+        <p>CUTM1033(2-1-1)</p>
+        <h4>Course Objectives:</h4>
+        <ul>
+          <li>Foundation knowledge in database concepts, technology and practice to groom students into well-informed database application developers.</li>
+          <li>Make the students understand the principles behind relational database management systems, including the database environment, the relational model, relational languages, develop simple SQL queries using MySQL Workbench.</li>
+          <li>Strong practice in SQL programming through a variety of database problems.</li>
+          
+        </ul>
+
+        <h4>Learning Outcomes:</h4>
+        <ul>
+          <li>Construct database models for different database applications.</li>
+          <li>Construct the entity-relationship diagrams of different databases using MySQL Workbench.</li>
+          <li>Convert the entity-relationship diagrams into relational tables.</li>
+          <li>Design, implement and normalize a relational model for a given problem domain.</li>
+          <li>Write SQL queries for performing database operations.</li>
+          <li>Different functions to update or delete data from the databases.</li>
+           
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4>Course Syllabus:</h4>
+        <div class="mb-3">
+          <div class="module-title">Module I:        Database System Concepts and Data Models (9 Hrs)</div>
+          <p><strong>Database Approach:</strong> Database, Approaches to Building a Database, Data Models, Database Management System (DBMS), DBMS Architecture, Building a DBMS, Components of DBMS Environment.
+          </p>
+<p></p><strong>File Based Systems and Database Systems:</strong> File Based Approach, Database Systems, File- oriented Systems vs. Database Systems, Advantages and Disadvantages of DBMS.
+          </p>
+<p></p><strong>Data Source:</strong> Types of Data sources, Access Documents and Information from Data Sources.</p>
+
+<p><strong>Roles in Database Environment:</strong> Database Users, Database Administrators (DBA)</p>
+
+<p><strong>Database installation procedure:</strong> Functionalities of MySQL Workbench, Creating a connection in MySQL Workbench, Setup the MySQL Workbench, Working of SQL Editor, Data Export & Import, Database table creation & insertion of values.</p>
+  <p><strong>Practice: </strong>
+    <ul>
+      <li>Collect data from different data sources and identify the type of data source.</li>
+      <li>Installation of MySQL Workbench. Import and export the database into MySQL Workbench.</li>
+      <li>Create instances of database in MySQL.</li>
+    </ul>
+
+        </div>
+        <div class="mb-3">
+          <div class="module-title">Module II:      Database System Architecture and ER Diagram (9 Hrs)</div>
+          <p>Three Level Architecture, External Level, Conceptual Level, Internal Level, Schemas, Mappings, Instances, Data Independence, Data Abstraction, E/R Model - Conceptual data modeling - motivation, entities, entity types, various types of attributes, relationships, relationship types, E/R diagram notation, examples, Database Design & Modeling using MySQL Workbench, Create EER Diagram with MySQL Workbench.</p>
+            <p><p><strong>Practice: </strong>
+    <ul>
+      <li>Analyze the problem and come with the entities in it. Identify what data has to be persisted in the databases.</li>
+      <li>Use MySQL Workbench to construct an E-R diagram for a car-insurance company whose customers own one or more cars each. Each car has associated with it zero to any number of recorded accidents.</li>
+      <li>Use MySQL Workbench to construct an E-R diagram for a hospital with a set of patients and a set of medical doctors. Associate with each patient a log of the various tests and examinations conducted.</li>
+      <li>A university registrar’s office maintains data about the following entities:
+        <ul>
+          <li>(a) Courses, including number, title, credits, syllabus, and prerequisites;</li>
+          <li>(b) Course offerings, including course number, year, semester, section number, instructor(s), timings, and classroom;</li>
+          <li>(c) Students, including student-id, name, and program;</li>
+          <li>(d) Instructors, including identification number, name, department, and title.</li>
+        </ul>
+      </li>
+      <li>Further, the enrollment of students in courses and grades awarded to students in each course they are enrolled for must be appropriately modeled. Use MySQL Workbench to construct an E-R diagram for the registrar’s office. Document all assumptions that you make about the mapping constraints.</li>
+    </ul>
+</p>
+
+        </div>
+        <div class="mb-3">
+          <div class="module-title">Module III:    Relational Data Model and Relational algebra (9 Hrs)</div>
+          <p>Relational Data Model: Concept of relations, schema-instance distinction, keys, referential integrity and foreign keys.
+
+Relational algebra operators: selection, projection, cross product, various types of joins, division, example queries, tuple relation calculus, domain relational calculus, converting the database specification in E/R notation to the relational schema.</p>
+          
+            <p><strong>Practice: </strong>1. Converting an E-R diagram of a given student-section-course database to a relational schema.
+2. Converting an E-R diagram of a given hospital database to a relational schema. </p>
+
+        </div>
+        <div class="mb-3">
+          <div class="module-title">Module IV:      Structured Query Language-DDL (7 Hrs)</div>
+          <p><strong>Database installation procedure:</strong> Database table creation & insertion of values.</p>
+<p><strong>Database Languages:</strong> SQL - DDL, DML, TCL, DCL
+<p><strong>SQL:</strong> Data definition in SQL, table, key and foreign key definitions, update behaviors. Querying in SQL - basic select-from-where block and its semantics, nested queries, notion of aggregation, aggregation functions group by and having clauses.</p>
+<p><strong>Data Definition Language:</strong> Creating a Database, Table Operations (Create, Alter, Drop, Truncate, Comment and Rename), Creating and Removing an Index.</p>
+<p><strong>Practice: </strong><p>1. Perform the following operations using MySQL Workbench:</p>
+<ul>
+  <li>Creating a Database</li>
+  <li>Viewing all databases</li>
+  <li>Viewing all Tables in a Database</li>
+  <li>Creating Tables (With and Without Constraints)</li>
+  <li>Inserting/Updating/Deleting Records in a Table</li>
+  <li>Saving (Commit) and Undoing (Rollback)</li>
+</ul>
+
+<p>2. Perform the following Altering a Table operations using MySQL Workbench:</p>
+<ul>
+  <li>Rename the table</li>
+  <li>Add a new column</li>
+  <li>Rename the column name</li>
+  <li>Change the data type of the column name</li>
+  <li>Delete table</li>
+</ul></p>
+
+            
+        </div>
+        <div class="mb-3">
+          <div class="module-title">Module V:      Structured Query Language-DML, DCL, TCL (7 Hrs) </div>
+          <p>Data Manipulation Language: Using different DML commands (Insert, Delete, Update, and Select), Sorting Results (Order By), Aggregate Functions, Join, Grouping Results (Group By)
+
+Data Control Language & Transaction Control Language: Using different DCL commands (Grant, Revoke) & using different TCL commands (Commit, Rollback and Savepoint).</p>
+         
+          <p><strong>Practice:</strong> <p>For a given set of relation schemes, create tables and perform the following using MySQL Workbench:</p>
+<ul>
+  <li>Simple Queries with Aggregate functions</li>
+  <li>Queries with Aggregate functions (GROUP BY and HAVING clause)</li>
+  <li>Queries involving:
+    <ul>
+      <li>Date Functions</li>
+      <li>String Functions</li>
+      <li>Math Functions</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Perform the following Join Queries using MySQL Workbench:</p>
+<ul>
+  <li>Inner Join</li>
+  <li>Outer Join</li>
+</ul>
+
+<p>Perform the following Subqueries using MySQL Workbench:</p>
+<ul>
+  <li>With IN clause</li>
+  <li>With EXISTS clause</li>
+</ul>
+
+<p>For a given set of relation tables perform the following using MySQL Workbench:</p>
+<ul>
+  <li>Creating Views (with and without CHECK OPTION)</li>
+  <li>Selecting from a View</li>
+  <li>Dropping Views</li>
+</ul></p>
+
+        </div>
+        <div class="mb-3">
+          <div class="module-title">Module VI:      Normalization (8 Hrs)</div>
+          <p>Normalization: Dependencies and Normal forms - Importance of a good schema design, problems encountered with bad schema designs, motivation for normal forms, dependency theory - functional dependencies, Armstrong's axioms for FD's, closure of a set of FD's, minimal covers, Types of Normalization: 1NF, 2NF, 3NF and BCNF, decompositions and desirable properties of them, algorithms for 3NF and BCNF normalization, multi-valued dependencies and 4NF, join dependencies and definition of 5NF.</p>
+         <p><strong>Practice:</strong> <ul>
+  <p>1. To check whether the given database table is normalized or not</p>
+  <li>If yes, find out the status of normalization and reasoning</li>
+  <li>First Normal Form (1NF)</li>
+  <li>Third Normal Form (3NF)</li>
+  <li>Boyce-Codd Normal Form (BCNF)</li>
+</ul>
+</p>
+        </div>
+        <div class="mb-3">
+          <div class="module-title">Module VII:     Transaction Management and Concurrency Control (5 Hrs)</div>
+          <p>Transaction processing and Error recovery: Concepts of transaction processing, ACID properties, concurrency control, locking based protocols for concurrency control, error recovery and logging, undo, redo, undo-redo logging and recovery methods.</p>
+          
+         <p><strong>Project:</strong> <ul>
+  <li>Mini project (Application Development using MySQL Workbench)
+    <ul>
+      <li>Leave Management System</li>
+      <li>Blood Donation Management System</li>
+      <li>CUTM Cafeteria System</li>
+      <li>Student Subject Registration System</li>
+      <li>CUTM Stock Monitoring System</li>
+      <li>(The above projects, including but not limited to, assign to the students)</li>
+    </ul>
+  </li>
+</ul>
+</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4>Text Books:</h4>
+        <ol>
+          <li>Fundamentals of Database System – Elmasari & Navathe - Pearson Education-5th, Edition.</li>
+          <li>Database System Concepts by Sudarshan, Korth (McGraw-Hill Education) - 6th, edition</li>
+
+        </ol>
+
+        <h4>Reference Books:</h4>
+        <ol>
+          <li>An introduction to Database System – Bipin Desai, Galgotia Publications</li>
+          <li>Database System: concept, Design & Application - S.K.Singh (Pearson Education)</li>
+          <li>https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html</li>
+          <li>https://www.edureka.co/blog/mysql-workbench-tutorial#SQL%20Development%20Editor</li>
+          
+        </ol>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4>Session Plan:</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered session-table">
+            <thead class="table-light">
+              <tr>
+                <th>Session</th>
+                <th>Topic</th>
+                <th>Reference Link (if any)</th>
+              </tr>
+            </thead>
+            <tbody>
+    <tr>
+      <td>Session 1 &amp; 2</td>
+      <td>Introduction, Course overview, and Basic concepts</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 3 &amp; 4</td>
+      <td>Introduction to Database Systems, Data Models</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 5 &amp; 6</td>
+      <td>ER Model concepts and diagramming</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 7 &amp; 8</td>
+      <td>Extended ER Model and Constraints</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 9 &amp; 10</td>
+      <td>Relational Model introduction, schema and instances</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 11 &amp; 12</td>
+      <td>Relational algebra: operations and expressions</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 13 &amp; 14</td>
+      <td>SQL basics: DDL and DML commands</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 15 &amp; 16</td>
+      <td>Advanced SQL: Joins, nested queries</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">EDUREKA VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 17 &amp; 18</td>
+      <td>Database Design: Normalization introduction</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 19 &amp; 20</td>
+      <td>Functional dependencies and normal forms</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">PPT</a></td>
+    </tr>
+    <tr>
+      <td>Session 21 &amp; 22</td>
+      <td>Project: Find entity and attributes for assigned project</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 23 (Module III)</td>
+      <td>Relational Data Model: Concept of relations, schema-instance distinction, Keys, Referential integrity and Foreign keys</td>
+      <td>
+        <a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK1</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK2</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">PPT</a>, SN-DCM23
+      </td>
+    </tr>
+    <tr>
+      <td>Session 24</td>
+      <td>Practice 7: University registrar’s office database modeling and ER diagram creation</td>
+      <td>Use MySQL Workbench</td>
+    </tr>
+    <tr>
+      <td>Session 25 &amp; 26</td>
+      <td>Different types of Keys, Relational algebra operators (selection, projection, cross product), Join operation, types of joins, division</td>
+      <td>
+        <a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">PPT</a>, SN-DCM25-26
+      </td>
+    </tr>
+    <tr>
+      <td>Session 27</td>
+      <td>Converting E/R notation to relational schema</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 28</td>
+      <td>Practice 8: Convert E-R diagram of student-section-course DB to relational schema</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 29</td>
+      <td>Example queries, Tuple Relational Calculus</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, <a href="#" target="_blank" rel="noopener noreferrer">PPT</a></td>
+    </tr>
+    <tr>
+      <td>Session 30</td>
+      <td>Practice 9: Convert E-R diagram of hospital database to relational schema</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 31</td>
+      <td>Domain Relational Calculus</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, <a href="#" target="_blank" rel="noopener noreferrer">PPT</a></td>
+    </tr>
+    <tr>
+      <td>Session 32</td>
+      <td>Project: Design EER diagram for assigned project</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 33 &amp; 34 (Module IV)</td>
+      <td>Database Languages: SQL - DDL, DML, TCL, DCL. Data definition, querying basics, aggregation, group by, having clauses</td>
+      <td>
+        <a href="#" target="_blank" rel="noopener noreferrer">COURSERA VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">EDUREKA VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">PPT</a>, SN-DCM33-34
+      </td>
+    </tr>
+    <tr>
+      <td>Session 35</td>
+      <td>Project: Convert ER diagram to Relational schema diagram</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 36 &amp; 37</td>
+      <td>Data Definition Language: Creating database, table operations, index creation</td>
+      <td>
+        <a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK1</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK2</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">PPT</a>, SN-DCM36-37
+      </td>
+    </tr>
+    <tr>
+      <td>Session 38</td>
+      <td>Practice 10 &amp; 11: DQL operations using MySQL Workbench (Create DB, Create/Alter Tables, Insert, Update, Delete, Commit, Rollback)</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">IITB VIRTUAL LAB LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 39 (Module V)</td>
+      <td>Data Manipulation Language: Insert, Delete, Update, Select commands</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK</a>, <a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, SN-DCM39</td>
+    </tr>
+    <tr>
+      <td>Session 40 &amp; 41</td>
+      <td>Sorting results (ORDER BY), Aggregate functions, Grouping (GROUP BY), Joins</td>
+      <td>
+        <a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, 
+        <a href="#" target="_blank" rel="noopener noreferrer">EDUREKA VIDEO LINK</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Session 42</td>
+      <td>
+        Practice 12, 13 &amp; 14:<br>
+        - DML: Simple and aggregate queries, group by, having<br>
+        - DCL &amp; TCL operations<br>
+        - Join queries (Inner, Outer)<br>
+        - Subqueries (IN, EXISTS)<br>
+        - Creating and managing Views
+      </td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">IITB VIRTUAL LAB LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 43</td>
+      <td>DCL &amp; TCL commands: Grant, Revoke, Commit, Rollback, Savepoint</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 44 (Module VI)</td>
+      <td>Normalization: Dependencies and Normal Forms, importance of schema design</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a>, <a href="#" target="_blank" rel="noopener noreferrer">PPT</a>, SN-DCM44</td>
+    </tr>
+    <tr>
+      <td>Session 45</td>
+      <td>1NF and 2NF explanation and examples</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 46</td>
+      <td>3NF and BCNF explanation and examples</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 47 &amp; 48</td>
+      <td>Normalization practice problems</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Session 49</td>
+      <td>Decomposition of relations, Lossless join property, Dependency preservation</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 50 &amp; 51</td>
+      <td>Introduction to Transactions and Concurrency Control</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 52 &amp; 53</td>
+      <td>Database Recovery Techniques, ACID properties</td>
+      <td><a href="#" target="_blank" rel="noopener noreferrer">NPTEL VIDEO LINK</a></td>
+    </tr>
+    <tr>
+      <td>Session 54</td>
+      <td>Course review, Q&amp;A, Final project discussion</td>
+      <td></td>
+    </tr>
+  </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>
