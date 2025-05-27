@@ -14,6 +14,18 @@
       padding: 0;
       box-sizing: border-box;
     }
+    #bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
+}
+
+
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -104,6 +116,10 @@
   </style>
 </head>
 <body>
+<video autoplay muted loop id="bg-video">
+  <source src="backvdo.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 
   <h1>🎓 CourseHub</h1>
   <p>Study Smarter, Not Harder</p>
