@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   
   <title> CUTM | Formats</title>
-    <link rel="icon" href="favicon.jpg" type="image/jpeg">
+    <link rel="icon" href="favicon.png" type="image/png">
 
   <style>
     /* Base styles */
@@ -149,10 +149,24 @@
         transform: translateY(-3px);
     }
     }
+    #bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
+}
 
   </style>
 </head>
 <body>
+   <video autoplay muted loop id="bg-video">
+  <source src="backvdo.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 
   <h1>📂 CUTM Formats</h1>
 
