@@ -85,6 +85,40 @@
     h2 {
       text-align: center;
     }
+    /* Style the timetable */
+#timetableDisplay table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+  background: white;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#timetableDisplay th, #timetableDisplay td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+#timetableDisplay th {
+  background-color: #2e3b55;
+  color: white;
+  font-weight: bold;
+}
+
+#timetableDisplay caption {
+  caption-side: top;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #2e3b55;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
   </style>
 </head>
 <body>
@@ -202,8 +236,50 @@
     // Set trimmed range
     sheet["!ref"] = XLSX.utils.encode_range({ s: { r: minRow, c: minCol }, e: { r: maxRow, c: maxCol } });
 
-    const html = XLSX.utils.sheet_to_html(sheet, { editable: false, header: "" });
-    document.getElementById("timetableDisplay").innerHTML = html;
+    const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+let timetableHTML = "<table><caption>🗓️ Weekly Timetable</caption><thead>";
+let courseInfoHTML = "<table><caption>📘 Course Information</caption><thead>";
+let inCourseInfo = false;
+
+for (let i = 0; i < jsonData.length; i++) {
+  const row = jsonData[i];
+
+  if (
+    row[0] &&
+    row[0].toString().trim().toLowerCase().startsWith("sl.no")
+  ) {
+    inCourseInfo = true;
+    courseInfoHTML += "<tr>";
+    row.forEach((cell) => {
+      courseInfoHTML += `<th>${cell || ""}</th>`;
+    });
+    courseInfoHTML += "</tr><tbody>";
+    continue;
+  }
+
+  if (inCourseInfo) {
+    courseInfoHTML += "<tr>";
+    row.forEach((cell) => {
+      courseInfoHTML += `<td>${cell || ""}</td>`;
+    });
+    courseInfoHTML += "</tr>";
+  } else {
+    if (row.every((cell) => cell === undefined || cell === "")) continue;
+    timetableHTML += "<tr>";
+    row.forEach((cell) => {
+      timetableHTML += `<td>${cell || ""}</td>`;
+    });
+    timetableHTML += "</tr>";
+  }
+}
+
+timetableHTML += "</thead></table>";
+courseInfoHTML += "</tbody></table>";
+
+document.getElementById("timetableDisplay").innerHTML =
+  timetableHTML + "<br>" + courseInfoHTML;
+
 
   } catch (err) {
     console.error(err);
