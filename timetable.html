@@ -170,28 +170,48 @@
     };
 
     const fetchAndShowTimetable = async (filePath, sheetName) => {
-      try {
-        const response = await fetch(filePath);
-        if (!response.ok) throw new Error("File not found");
+  try {
+    const response = await fetch(filePath);
+    const arrayBuffer = await response.arrayBuffer();
+    const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
-        const arrayBuffer = await response.arrayBuffer();
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+    const sheet = workbook.Sheets[sheetName];
+    if (!sheet) {
+      document.getElementById("timetableDisplay").innerHTML =
+        `<p class="error">❌ Sheet '${sheetName}' not found in Excel.</p>`;
+      return;
+    }
 
-        const sheet = workbook.Sheets[sheetName];
-        if (!sheet) {
-          document.getElementById("timetableDisplay").innerHTML =
-            `<p class="error">❌ Sheet '${sheetName}' not found in Excel.</p>`;
-          return;
-        }
+    // Detect dynamic range (non-empty cells)
+    const range = XLSX.utils.decode_range(sheet["!ref"]);
+    let minRow = range.e.r, maxRow = 0, minCol = range.e.c, maxCol = 0;
 
-        const html = XLSX.utils.sheet_to_html(sheet);
-        document.getElementById("timetableDisplay").innerHTML = html;
-      } catch (err) {
-        console.error(err);
-        document.getElementById("timetableDisplay").innerHTML =
-          `<p class="error">❌ Failed to load timetable. Please check the file path or sheet name.</p>`;
+    for (let cell in sheet) {
+      if (cell[0] === '!') continue;
+      const { r, c } = XLSX.utils.decode_cell(cell);
+      const cellValue = sheet[cell].v;
+
+      if (cellValue !== undefined && cellValue !== "") {
+        if (r < minRow) minRow = r;
+        if (r > maxRow) maxRow = r;
+        if (c < minCol) minCol = c;
+        if (c > maxCol) maxCol = c;
       }
-    };
+    }
+
+    // Set trimmed range
+    sheet["!ref"] = XLSX.utils.encode_range({ s: { r: minRow, c: minCol }, e: { r: maxRow, c: maxCol } });
+
+    const html = XLSX.utils.sheet_to_html(sheet, { editable: false, header: "" });
+    document.getElementById("timetableDisplay").innerHTML = html;
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById("timetableDisplay").innerHTML =
+      `<p class="error">❌ Failed to load timetable. Please check the file path or sheet name.</p>`;
+  }
+};
+
 
     document.getElementById("userForm").addEventListener("submit", function (e) {
       e.preventDefault();
