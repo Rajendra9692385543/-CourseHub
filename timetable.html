@@ -189,18 +189,89 @@
   }
 }
 
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2e3b55;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  /* start hidden and moved up */
+  transform-origin: center;
+  transform: translate(-50%, -20px);
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  animation: slideFadeIn 0.6s ease forwards;
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Waving hand animation */
+.wave {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+  font-size: 22px;
+  user-select: none;
+}
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(15deg); }
+  30%  { transform: rotate(-10deg); }
+  45%  { transform: rotate(15deg); }
+  60%  { transform: rotate(-10deg); }
+  75%  { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+}
+
   </style>
 </head>
 <body>
-
+<video autoplay muted loop id="bg-video">
+  <source src="backvdo.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
   <!-- Navigation Bar -->
   <nav>
     <div style="font-size: 20px; font-weight: bold;">📚 CourseHub</div>
     <div>
       <a href="index.html">🏠 Home</a>
-      <a href="#" onclick="document.getElementById('loginForm').scrollIntoView();">👨‍🎓 Login</a>
-      <a href="admin.html">🔐 Admin</a>
-      <a href="all.html">📋 All Timetables</a>
     </div>
   </nav>
 
@@ -211,15 +282,17 @@
       <form id="userForm">
         <label>School</label>
         <select id="school" required>
-          <option value="">Choose</option>
+          <option value="">Select your School</option>
           <option value="SoET">SoET</option>
+          <option value="SoAS">SoM</option>
           <option value="SoAS">SoAS</option>
         </select>
 
         <label>Branch</label>
         <select id="branch" required>
-          <option value="">Choose</option>
+          <option value="">Select Branch</option>
           <option value="CSE">CSE</option>
+          <option value="CSE">BBA</option>
           <option value="ECE">ECE</option>
           <option value="EEE">EEE</option>
           <option value="MECH">MECH</option>
@@ -228,10 +301,15 @@
 
         <label>Semester</label>
         <select id="sem" required>
-          <option value="">Choose</option>
-          <option value="S3">S3</option>
-          <option value="S4">S4</option>
-          <option value="S5">S5</option>
+          <option value="">Select Current Semester</option>
+          <option value="S3">01</option>
+          <option value="S3">02</option>
+          <option value="S3">03</option>
+          <option value="S4">04</option>
+          <option value="S5">05</option>
+          <option value="S3">06</option>
+          <option value="S3">07</option>
+          <option value="S3">08</option>
         </select>
 
         <label>Section</label>
@@ -256,6 +334,9 @@
   <div id="timetableDisplay"></div>
 </div>
   </div>
+<div id="welcomeToast" class="toast">
+  <span class="wave">👋</span> Welcome to the Page! Select your details to view your schedule.
+</div>
 
   <script>
     const timetableFiles = {
@@ -355,6 +436,16 @@
         if (filePath) fetchAndShowTimetable(filePath, sheetName);
       }
     };
+
+    window.addEventListener("load", () => {
+  const toast = document.getElementById("welcomeToast");
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 5000); // Hide after 5 seconds
+});
+
   </script>
 </body>
 </html>
