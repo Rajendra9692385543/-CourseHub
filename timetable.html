@@ -90,7 +90,7 @@
 #timetableDisplay {
   overflow-x: auto;
   margin-top: 30px;
-  padding: 15px;
+  padding: 20px;
   background: #f9f9f9;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -98,13 +98,13 @@
 
 /* Timetable Table */
 #timetableDisplay table {
-  min-width: 900px; /* Ensures wide layout for scrolling */
+  min-width: 1200px; /* ⬅️ Increased from 900px to 1200px */
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   background-color: #ffffff;
   border-radius: 16px;
-  font-size: 15px;
+  font-size: 16px;
   table-layout: fixed;
 }
 
@@ -114,16 +114,16 @@
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 14px 12px;
+  padding: 16px 14px;
   text-align: center;
   border: 1px solid #ddd;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* Data Cells */
 #timetableDisplay td {
-  padding: 14px 12px;
+  padding: 16px 14px;
   text-align: center;
   border: 1px solid #ddd;
   word-wrap: break-word;
@@ -148,9 +148,9 @@
 /* Table Caption */
 #timetableDisplay caption {
   caption-side: top;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  padding: 15px;
+  padding: 16px;
   background: #2e3b55;
   color: #ffffff;
   border-radius: 16px 16px 0 0;
@@ -159,8 +159,8 @@
 /* Responsive Styling */
 @media (max-width: 768px) {
   #timetableDisplay table {
+    min-width: 1000px;
     font-size: 14px;
-    min-width: 700px; /* Still scrollable on smaller screens */
   }
 
   #timetableDisplay th,
