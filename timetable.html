@@ -86,47 +86,47 @@
       text-align: center;
     }
     /* Style the timetable */
-#timetableDisplay table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #ffffff;
+/* Make timetable container horizontally scrollable */
+#timetableDisplayContainer {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  margin-top: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  margin-top: 30px;
+  background: white;
+}
+
+/* Table styles */
+#timetableDisplay table {
+  width: 100%;
+  min-width: 600px; /* ensures table doesn't shrink too much on mobile */
+  border-collapse: collapse;
   font-size: 14px;
 }
 
-#timetableDisplay th, #timetableDisplay td {
-  padding: 12px 10px;
-  text-align: center;
-  border: 1px solid #ddd;
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #timetableDisplay table {
+    font-size: 12px;
+    min-width: 500px;
+  }
+
+  #timetableDisplay th, #timetableDisplay td {
+    padding: 8px 6px;
+  }
 }
 
-#timetableDisplay th {
-  background-color: #2e3b55;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
+@media (max-width: 480px) {
+  #timetableDisplay table {
+    font-size: 11px;
+    min-width: 400px;
+  }
+
+  #timetableDisplay th, #timetableDisplay td {
+    padding: 6px 4px;
+  }
 }
 
-#timetableDisplay tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-#timetableDisplay tr:hover {
-  background-color: #f1f1f1;
-}
-
-#timetableDisplay caption {
-  font-size: 20px;
-  font-weight: bold;
-  background: #2e3b55;
-  color: white;
-  padding: 12px;
-  border-radius: 12px 12px 0 0;
-  caption-side: top;
-}
 
   </style>
 </head>
@@ -191,7 +191,9 @@
     </div>
 
     <!-- Timetable Display -->
-    <div id="timetableDisplay"></div>
+    <div id="timetableDisplayContainer" style="overflow-x:auto;">
+  <div id="timetableDisplay"></div>
+</div>
   </div>
 
   <script>
