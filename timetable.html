@@ -86,84 +86,90 @@
       text-align: center;
     }
     /* Style the timetable */
-/* Timetable Wrapper */
+/* Timetable Container */
 #timetableDisplay {
   overflow-x: auto;
   margin-top: 30px;
-  padding: 10px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* Timetable Table Styling */
+/* Timetable Table */
 #timetableDisplay table {
+  min-width: 900px; /* Ensures wide layout for scrolling */
   width: 100%;
-  border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+  border-radius: 16px;
   font-size: 15px;
-  table-layout: fixed; /* Forces equal width */
+  table-layout: fixed;
 }
 
-/* Header and Cell Styling */
-#timetableDisplay th, 
-#timetableDisplay td {
-  padding: 12px 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-  white-space: nowrap; /* Keeps content in single line */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Allow wrapping only if content too long */
-#timetableDisplay td {
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-/* Header Styling */
+/* Header Cells */
 #timetableDisplay th {
   background-color: #2e3b55;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
-  font-size: 16px;
   text-transform: uppercase;
+  padding: 14px 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+  font-size: 16px;
 }
 
-/* Alternate row color */
-#timetableDisplay tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* Data Cells */
+#timetableDisplay td {
+  padding: 14px 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+  white-space: normal;
+  background-color: #fff;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
-/* Hover Effect */
+/* Hover & Touch Highlight */
 #timetableDisplay td:hover,
 #timetableDisplay td:active {
-  background-color: #ffeaa7;
-  box-shadow: 0 0 8px #fdcb6e;
-  transition: 0.2s;
+  background-color: #e8f0fe;
+  box-shadow: inset 0 0 5px #1a73e8;
   cursor: pointer;
 }
 
-/* Caption Styling */
-#timetableDisplay caption {
-  font-size: 20px;
-  font-weight: bold;
-  background: #2e3b55;
-  color: white;
-  padding: 12px;
-  border-radius: 14px 14px 0 0;
-  caption-side: top;
+/* Even row coloring */
+#timetableDisplay tr:nth-child(even) td {
+  background-color: #f5f5f5;
 }
 
-/* Responsive Tweaks for Smaller Screens */
+/* Table Caption */
+#timetableDisplay caption {
+  caption-side: top;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  background: #2e3b55;
+  color: #ffffff;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Responsive Styling */
 @media (max-width: 768px) {
   #timetableDisplay table {
     font-size: 14px;
+    min-width: 700px; /* Still scrollable on smaller screens */
   }
 
   #timetableDisplay th,
   #timetableDisplay td {
-    padding: 10px 8px;
+    padding: 12px 8px;
+  }
+
+  #timetableDisplay {
+    padding: 10px;
   }
 }
 
