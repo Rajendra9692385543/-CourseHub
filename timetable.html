@@ -96,25 +96,29 @@
 /* Timetable Table Styling */
 #timetableDisplay table {
   width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
   background: #ffffff;
   border-radius: 14px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  font-size: 16px; /* Increased for readability */
-  table-layout: fixed;
-  word-wrap: break-word;
+  font-size: 15px;
+  table-layout: fixed; /* Forces equal width */
 }
 
-/* Cell & Header Styling */
+/* Header and Cell Styling */
 #timetableDisplay th, 
 #timetableDisplay td {
-  padding: 18px 14px; /* More spacing */
+  padding: 12px 10px;
   text-align: center;
   border: 1px solid #ddd;
+  white-space: nowrap; /* Keeps content in single line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Allow wrapping only if content too long */
+#timetableDisplay td {
   white-space: normal;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Header Styling */
@@ -122,47 +126,46 @@
   background-color: #2e3b55;
   color: white;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
-/* Zebra striping for rows */
+/* Alternate row color */
 #timetableDisplay tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Hover/Touch Glow Effect */
+/* Hover Effect */
 #timetableDisplay td:hover,
 #timetableDisplay td:active {
   background-color: #ffeaa7;
-  box-shadow: 0 0 10px #fdcb6e;
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 8px #fdcb6e;
+  transition: 0.2s;
   cursor: pointer;
 }
 
-/* Table Caption Styling (if used) */
+/* Caption Styling */
 #timetableDisplay caption {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   background: #2e3b55;
   color: white;
-  padding: 14px;
+  padding: 12px;
   border-radius: 14px 14px 0 0;
   caption-side: top;
 }
 
-/* Mobile-Friendly Adjustments */
+/* Responsive Tweaks for Smaller Screens */
 @media (max-width: 768px) {
   #timetableDisplay table {
-    font-size: 15px;
+    font-size: 14px;
   }
 
-  #timetableDisplay th, 
+  #timetableDisplay th,
   #timetableDisplay td {
-    padding: 14px 10px;
+    padding: 10px 8px;
   }
 }
-
 
   </style>
 </head>
