@@ -189,6 +189,24 @@
         <button type="submit">Load Timetable</button>
       </form>
     </div>
+<div id="controls" style="display:none;">
+  <label for="sectionView">Choose Section:</label>
+  <select id="sectionView">
+    <option value="1">Section 1</option>
+    <option value="2">Section 2</option>
+  </select>
+
+  <label for="dayFilter">Filter by Day:</label>
+  <select id="dayFilter">
+    <option value="All">All Days</option>
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+  </select>
+</div>
 
     <!-- Timetable Display -->
     <div id="timetableDisplay"></div>
@@ -225,39 +243,31 @@
       return;
     }
 
-    // Detect dynamic range (non-empty cells)
-    const range = XLSX.utils.decode_range(sheet["!ref"]);
-    let minRow = range.e.r, maxRow = 0, minCol = range.e.c, maxCol = 0;
+    const allRows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-    for (let cell in sheet) {
-      if (cell[0] === '!') continue;
-      const { r, c } = XLSX.utils.decode_cell(cell);
-      const cellValue = sheet[cell].v;
+    // Auto-split at the first blank row
+    let splitIndex = allRows.findIndex(row => row.every(cell => !cell));
+    if (splitIndex === -1) splitIndex = Math.floor(allRows.length / 2); // fallback
 
-      if (cellValue !== undefined && cellValue !== "") {
-        if (r < minRow) minRow = r;
-        if (r > maxRow) maxRow = r;
-        if (c < minCol) minCol = c;
-        if (c > maxCol) maxCol = c;
-      }
-    }
+    const section1 = allRows.slice(0, splitIndex);
+    const section2 = allRows.slice(splitIndex + 1);
 
-    // Set trimmed range
-    sheet["!ref"] = XLSX.utils.encode_range({ s: { r: minRow, c: minCol }, e: { r: maxRow, c: maxCol } });
+    // Store for filtering
+    window.sectionsData = {
+      1: section1,
+      2: section2
+    };
 
-    const html = `<table><caption>📅 Timetable</caption>` + 
-             XLSX.utils.sheet_to_html(sheet, { range: "A1:M30" })
-               .replace("<table>", "")
-               .replace("</table>", "");
-document.getElementById("timetableDisplay").innerHTML = html;
+    document.getElementById('controls').style.display = 'block';
 
-
+    renderSection(1, "All");
   } catch (err) {
     console.error(err);
     document.getElementById("timetableDisplay").innerHTML =
-      `<p class="error">❌ Failed to load timetable. Please check the file path or sheet name.</p>`;
+      `<p class="error">❌ Failed to load timetable.</p>`;
   }
 };
+
 
 
     document.getElementById("userForm").addEventListener("submit", function (e) {
