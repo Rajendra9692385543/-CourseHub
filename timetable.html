@@ -86,28 +86,30 @@
       text-align: center;
     }
     /* Style the timetable */
-/* Wrapper for table scroll on smaller screens */
+/* Timetable Wrapper */
 #timetableDisplay {
   overflow-x: auto;
   margin-top: 30px;
+  padding: 10px;
 }
 
 /* Timetable Table Styling */
 #timetableDisplay table {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  table-layout: fixed; /* Ensures equal column widths */
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-size: 16px; /* Increased for readability */
+  table-layout: fixed;
   word-wrap: break-word;
 }
 
 /* Cell & Header Styling */
 #timetableDisplay th, 
 #timetableDisplay td {
-  padding: 12px 10px;
+  padding: 18px 14px; /* More spacing */
   text-align: center;
   border: 1px solid #ddd;
   white-space: normal;
@@ -120,6 +122,7 @@
   background-color: #2e3b55;
   color: white;
   font-weight: bold;
+  font-size: 17px;
   text-transform: uppercase;
 }
 
@@ -139,26 +142,27 @@
 
 /* Table Caption Styling (if used) */
 #timetableDisplay caption {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   background: #2e3b55;
   color: white;
-  padding: 12px;
-  border-radius: 12px 12px 0 0;
+  padding: 14px;
+  border-radius: 14px 14px 0 0;
   caption-side: top;
 }
 
 /* Mobile-Friendly Adjustments */
 @media (max-width: 768px) {
   #timetableDisplay table {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   #timetableDisplay th, 
   #timetableDisplay td {
-    padding: 8px 6px;
+    padding: 14px 10px;
   }
 }
+
 
   </style>
 </head>
@@ -224,7 +228,8 @@
 
     <!-- Timetable Display -->
     <div id="timetableDisplayContainer" style="overflow-x:auto;">
-  <div id="timetableDisplay"></div>
+  <div id="timetableDisplay" style="max-width: 1000px; margin: auto;"></div>
+
 </div>
   </div>
 
