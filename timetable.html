@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timetable | CourseHub</title>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #1e1e2f;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 100px 20px 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 30px;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background: #1e1e2f;
+      color: white;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div style="font-size: 20px; font-weight: bold;">📚 CourseHub</div>
+    <div>
+      <a href="index.html">🏠 Home</a>
+      <a href="#" onclick="document.getElementById('loginForm').scrollIntoView();">👨‍🎓 Login</a>
+      <a href="admin.html">🔐 Admin</a>
+      <a href="all.html">📋 All Timetables</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <!-- Login Form -->
+    <div class="form-container" id="loginForm">
+      <h2>👨‍🎓 Select Your Details</h2>
+      <form id="userForm">
+        <label>School</label>
+        <select id="school" required>
+          <option value="">Choose</option>
+          <option value="SoET">SoET</option>
+          <option value="SoAS">SoAS</option>
+        </select>
+
+        <label>Branch</label>
+        <select id="branch" required>
+          <option value="">Choose</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="MECH">MECH</option>
+          <option value="CIVIL">CIVIL</option>
+        </select>
+
+        <label>Semester</label>
+        <select id="sem" required>
+          <option value="">Choose</option>
+          <option value="S3">S3</option>
+          <option value="S4">S4</option>
+          <option value="S5">S5</option>
+        </select>
+
+        <label>Section</label>
+        <select id="section" required>
+          <option value="">Choose</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+        </select>
+
+        <button type="submit">Load Timetable</button>
+      </form>
+    </div>
+
+    <!-- Timetable Display -->
+    <div id="timetableDisplay"></div>
+  </div>
+
+  <script>
+    const timetableFiles = {
+      S3: "timetable/S3.xlsx",
+      S4: "timetable/S4.xlsx",
+      S5: "timetable/S5.xlsx"
+    };
+
+    const generateSheetName = ({ branch, section }) => {
+      if (section === "H" && (branch === "EEE" || branch === "ECE")) {
+        return `Section H_${branch}`;
+      }
+      return `${branch}-${section}`;
+    };
+
+    const getFilePathBySemester = (sem) => {
+      return timetableFiles[sem] || null;
+    };
+
+    const fetchAndShowTimetable = async (filePath, sheetName) => {
+      try {
+        const response = await fetch(filePath);
+        if (!response.ok) throw new Error("File not found");
+
+        const arrayBuffer = await response.arrayBuffer();
+        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+
+        const sheet = workbook.Sheets[sheetName];
+        if (!sheet) {
+          document.getElementById("timetableDisplay").innerHTML =
+            `<p class="error">❌ Sheet '${sheetName}' not found in Excel.</p>`;
+          return;
+        }
+
+        const html = XLSX.utils.sheet_to_html(sheet);
+        document.getElementById("timetableDisplay").innerHTML = html;
+      } catch (err) {
+        console.error(err);
+        document.getElementById("timetableDisplay").innerHTML =
+          `<p class="error">❌ Failed to load timetable. Please check the file path or sheet name.</p>`;
+      }
+    };
+
+    document.getElementById("userForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const user = {
+        school: document.getElementById("school").value,
+        branch: document.getElementById("branch").value,
+        sem: document.getElementById("sem").value,
+        section: document.getElementById("section").value
+      };
+
+      localStorage.setItem("coursehubUser", JSON.stringify(user));
+
+      const filePath = getFilePathBySemester(user.sem);
+      const sheetName = generateSheetName(user);
+      if (!filePath) {
+        document.getElementById("timetableDisplay").innerHTML =
+          `<p class="error">❌ No timetable file available for ${user.sem}.</p>`;
+        return;
+      }
+
+      fetchAndShowTimetable(filePath, sheetName);
+    });
+
+    window.onload = () => {
+      const saved = JSON.parse(localStorage.getItem("coursehubUser"));
+      if (saved) {
+        document.getElementById("school").value = saved.school;
+        document.getElementById("branch").value = saved.branch;
+        document.getElementById("sem").value = saved.sem;
+        document.getElementById("section").value = saved.section;
+
+        const filePath = getFilePathBySemester(saved.sem);
+        const sheetName = generateSheetName(saved);
+        if (filePath) fetchAndShowTimetable(filePath, sheetName);
+      }
+    };
+  </script>
+</body>
+</html>
