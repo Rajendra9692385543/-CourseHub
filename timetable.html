@@ -334,7 +334,7 @@
 </div>
   </div>
 <div id="welcomeToast" class="toast">
-  <span class="wave">👋</span> Welcome to the Page! Select your details to view your schedule.
+  <span class="wave">👋🏻</span> Welcome ! Fill details to view your schedule.
 </div>
 
   <script>
@@ -345,11 +345,22 @@
     };
 
     const generateSheetName = ({ branch, section }) => {
-      if (section === "H" && (branch === "EEE" || branch === "ECE")) {
-        return `Section H_${branch}`;
-      }
-      return `${branch}-${section}`;
-    };
+  if (branch === "BBA") {
+    return "BBA-A"; // Only one section
+  }
+
+  if (branch === "AG") {
+    return `AG-${section}`; // AG sections A to H
+  }
+
+  // Updated rule: ECE-H and EEE-H instead of "Section H_ECE"
+  if (section === "H" && (branch === "EEE" || branch === "ECE")) {
+    return `${branch}-H`;
+  }
+
+  return `${branch}-${section}`; // Default format
+};
+
 
     const getFilePathBySemester = (sem) => {
       return timetableFiles[sem] || null;
