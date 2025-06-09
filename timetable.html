@@ -38,49 +38,65 @@
     }
 
     .form-container {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 40px;
+  transition: all 0.3s ease-in-out;
+}
 
-    label {
-      font-weight: bold;
-    }
+.form-container h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2e3b55;
+}
 
-    select, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0 20px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+.form-container label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 14px;
+}
 
-    table {
-      width: 100%;
-      margin-top: 30px;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+.form-container select,
+.form-container button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.2s;
+}
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
-      text-align: center;
-    }
+.form-container select:focus,
+.form-container button:focus {
+  border-color: #2e3b55;
+  outline: none;
+}
 
-    th {
-      background: #1e1e2f;
-      color: white;
-    }
+.form-container button {
+  background-color: #2e3b55;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
 
-    .error {
-      color: red;
-      text-align: center;
-      font-weight: bold;
-    }
+.form-container button:hover {
+  background-color: #1e1e2f;
+}
+@media screen and (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+    max-width: 90%;
+  }
+}
+
 
     h2 {
       text-align: center;
