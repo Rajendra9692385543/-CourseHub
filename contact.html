@@ -190,9 +190,13 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init('9LLEYH6nu1YSU5TaE');
-    })();
+    
+  (function() {
+    emailjs.init('9LLEYH6nu1YSU5TaE'); // Public Key
+  })();
+
+  function sendEmail(event) {
+    event.preventDefault();
 
     const form = document.getElementById('contact-form');
     const successMessage = document.getElementById('successMessage');
@@ -200,41 +204,31 @@
     const homeButton = document.getElementById('homeButton');
     const submitBtn = document.getElementById('submitBtn');
 
-    function showMessage(element) {
-      element.classList.add('show');
-    }
+    successMessage.classList.remove('show');
+    errorMessage.classList.remove('show');
+    homeButton.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.6';
 
-    function hideMessage(element) {
-      element.classList.remove('show');
-    }
-
-    function sendEmail(event) {
-      event.preventDefault();
-      hideMessage(successMessage);
-      hideMessage(errorMessage);
-      homeButton.style.display = 'none';
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.6';
-
-      emailjs.sendForm('service_in8w43j', 'template_9eqt2db', form)
-        .then(function() {
-          showMessage(successMessage);
-          form.style.opacity = '0.5';
+    emailjs.sendForm('service_in8w43j', 'template_uc8fxs8', form)
+      .then(function() {
+        successMessage.classList.add('show');
+        form.style.opacity = '0.5';
+        setTimeout(() => {
+          form.style.display = 'none';
+          homeButton.style.display = 'inline-block';
+          homeButton.style.opacity = '0';
           setTimeout(() => {
-            form.style.display = 'none';
-            homeButton.style.display = 'inline-block';
-            homeButton.style.opacity = '0';
-            setTimeout(() => {
-              homeButton.style.opacity = '1';
-            }, 50);
-          }, 800);
-        }, function(error) {
-          showMessage(errorMessage);
-          console.error('EmailJS error:', error);
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-        });
-    }
+            homeButton.style.opacity = '1';
+          }, 50);
+        }, 800);
+      }, function(error) {
+        errorMessage.classList.add('show');
+        alert("❌ EmailJS error: " + JSON.stringify(error)); // Shows exact error
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      });
+  }
 
     // Generate rain drops
     const rain = document.getElementById('rain');
