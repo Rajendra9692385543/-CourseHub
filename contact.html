@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -27,7 +25,6 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      background: transparent;
       z-index: 0;
     }
 
@@ -41,15 +38,13 @@
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(100vh);
-      }
+      to { transform: translateY(100vh); }
     }
 
     .container {
       position: relative;
       z-index: 1;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 14px;
       padding: 25px 20px;
       width: 100%;
@@ -76,9 +71,7 @@
       font-size: 14px;
     }
 
-    label:first-of-type {
-      margin-top: 0;
-    }
+    label:first-of-type { margin-top: 0; }
 
     input[type="text"],
     input[type="email"],
@@ -158,18 +151,16 @@
 </head>
 <body>
   <div class="rain" id="rain"></div>
-
-  <div class="container">
-    <h1>Contact Us</h1>
-
-    <div id="successMessage" class="message success-message">
+ <div id="successMessage" class="message success-message">
       ✅ Your message has been sent successfully!
     </div>
     <div id="errorMessage" class="message error-message">
       ❌ Oops! Something went wrong. Please try again.
     </div>
+  <div class="container">
+    <h1>Contact Us</h1>
 
-    <form id="contact-form" onsubmit="sendEmail(event)" method="POST">
+    <form id="contact-form" onsubmit="sendEmail(event)">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required />
 
@@ -190,13 +181,9 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    
-  (function() {
-    emailjs.init('9LLEYH6nu1YSU5TaE'); // Public Key
-  })();
-
-  function sendEmail(event) {
-    event.preventDefault();
+    (function() {
+      emailjs.init('9LLEYH6nu1YSU5TaE'); // Your public key
+    })();
 
     const form = document.getElementById('contact-form');
     const successMessage = document.getElementById('successMessage');
@@ -204,39 +191,49 @@
     const homeButton = document.getElementById('homeButton');
     const submitBtn = document.getElementById('submitBtn');
 
-    successMessage.classList.remove('show');
-    errorMessage.classList.remove('show');
-    homeButton.style.display = 'none';
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = '0.6';
+    function showMessage(element) {
+      element.classList.add('show');
+    }
 
-    emailjs.sendForm('service_in8w43j', 'template_uc8fxs8', form)
-      .then(function() {
-        successMessage.classList.add('show');
-        form.style.opacity = '0.5';
-        setTimeout(() => {
-          form.style.display = 'none';
-          homeButton.style.display = 'inline-block';
-          homeButton.style.opacity = '0';
+    function hideMessage(element) {
+      element.classList.remove('show');
+    }
+
+    function sendEmail(event) {
+      event.preventDefault();
+      hideMessage(successMessage);
+      hideMessage(errorMessage);
+      homeButton.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+
+      emailjs.sendForm('service_3y92b9t', 'template_uc8fxs8', form)
+        .then(function() {
+          showMessage(successMessage);
+          form.style.opacity = '0.5';
           setTimeout(() => {
-            homeButton.style.opacity = '1';
-          }, 50);
-        }, 800);
-      }, function(error) {
-        errorMessage.classList.add('show');
-        alert("❌ EmailJS error: " + JSON.stringify(error)); // Shows exact error
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-      });
-  }
+            form.style.display = 'none';
+            homeButton.style.display = 'inline-block';
+            homeButton.style.opacity = '0';
+            setTimeout(() => {
+              homeButton.style.opacity = '1';
+            }, 50);
+          }, 800);
+        }, function(error) {
+          showMessage(errorMessage);
+          alert("❌ EmailJS error: " + JSON.stringify(error)); // Optional for debugging
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        });
+    }
 
-    // Generate rain drops
+    // Rain animation
     const rain = document.getElementById('rain');
     for (let i = 0; i < 100; i++) {
       const drop = document.createElement('div');
       drop.className = 'drop';
       drop.style.left = Math.random() * 100 + 'vw';
-      drop.style.animationDuration = 0.5 + Math.random() * 1.5 + 's';
+      drop.style.animationDuration = (0.5 + Math.random() * 1.5) + 's';
       drop.style.animationDelay = Math.random() * 3 + 's';
       rain.appendChild(drop);
     }
